@@ -1,0 +1,80 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{oldstyle}                           % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{grey}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Enrico}{Saccon}
+\title{Curriculum vitae}                               % optional, remove / comment the line if not wanted
+\address{Via Cortina 6}{31020}{San Fior (TV)}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\phone[mobile]{3398242401}                   % optional, remove / comment the line if not wanted
+\email{enricosaccon96@gmail.com}                               % optional, remove / comment the line if not wanted
+\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Educazione}
+\cventry{2015--}{Laurea}{Università Degli Studi di Trento}{}{}{Frequentate corso triennale in informatica.}  % arguments 3 to 6 can be left empty
+\cventry{2010--2015}{Diploma}{Liceo Scientifico G. Marconi}{Conegliano (TV)}{}{}
+
+\section{Esperienze}
+\cventry{2017}{CoderDojo}{}{Trento}{}{Organizzazione che si occupa di insegnare ai più giovani la passione per l'informatica, con corsi nelle scuole ed extra-scolastici.}
+\cventry{2017}{Hackathon Italia}{}{Trento}{}{Concorso di programmazione facente parte della rivoluzione digitale italiana.}
+\cventry{2016}{Hackaton FBK}{}{Trento}{}{Concorso di programmazione tenuto dalla Fondazione Bruno Kesler.}
+
+\section{Lingue}
+\cvitemwithcomment{Italiano}{Madrelingua }{}
+\cvitemwithcomment{Inglese}{B2}{Certificazione Cambridge. Seguito corso con madrelingua dal 2008 al 2014.}
+
+\section{Computer skills}
+\textbf{Dall'università} ho appreso i linguaggi fondamentali, con particolare attenzione a C e C++, per quanto riguarda il paradigma imperativo, e PolyML per quanto riguarda quello funzionale. In database conosco invece SQL, e MongoDB. Inoltre mi è stata fornita una conoscenza di base di Linux.\newline
+\textbf{Per conto mio} ho approfondito le conoscenze in particolare di C e di Python, legando il tutto soprattutto a Raspberry e Arduino, seguendo la mia passione per la robotica. \newline
+
+\section{Interessi}
+Un mio grande hobby che ho scoperto a Trento è l'arrampicata. Associando questo nuovo hobby a uno più vecchio che è la robotica, sto cercando di sviluppare un piccolo drone che segua l'arrampicatore e ne filmi l'ascesa. 
+
+\section{Thesis}
+\cvitem{Titolo}{\emph{Ottimizzazione integrali di Fresnel su GPU}}
+\cvitem{Supervisore}{Professor Roberto Passerone}
+\cvitem{Descrizione}{L'università di Trento è stata finanziata per realizzare un carrello per anziani automatizzato che possa aiutare l'anziano a spostarsi. Il mio lavoro consite nel trasportare gli integrali di Fresnel su scheda grafica e studiarne i vantaggi per quanto riguarda tempistiche e consumo di energia.}
+
+\end{document}
+
+
+%% end of file `template.tex'.
