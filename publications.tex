@@ -1,0 +1,32 @@
+\documentclass[10pt,a4paper,sans]{article} 
+\usepackage[utf8]{inputenc}
+
+\usepackage[scale=0.85]{geometry} % Reduce document margins (default: 0.8)
+\usepackage{gensymb} %used for the degree "°" symbol
+\usepackage{multicol}
+
+\usepackage[% https://tex.stackexchange.com/questions/299915/how-to-add-a-bibliography-to-moderncv
+  backend=biber,
+  style=ieee,
+  defernumbers=true,
+  sorting=ydnt,         % Sort by year (descending), name, title
+% sorting=none,         % Do not sort at all. All entries are processed in citation order.
+]{biblatex}
+\addbibresource{biblio.bib} % to use bib file created with filecontents
+
+%\nopagenumbers
+\usepackage{lastpage}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+  \Large{Enrico Saccon,}\\
+  \Large{List of Publications update at \today}
+\end{center}
+
+%%%% PUBLICATIONS %%%%
+\nocite{*}
+\printbibliography[heading=none]
+
+\end{document}
