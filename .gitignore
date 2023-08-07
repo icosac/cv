@@ -1,6 +1,3 @@
-!out/enrico.pdf
-!out/publications.pdf
-
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -305,3 +302,8 @@ TSWLatexianTemp*
 
 OLD
 test
+
+# Exceptions
+!out/enrico.pdf
+!out/publications.pdf
+
