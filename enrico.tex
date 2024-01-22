@@ -14,8 +14,8 @@
   backend=biber,
   style=ieee,
   defernumbers=true,
-  sorting=ydnt,         % Sort by year (descending), name, title
-% sorting=none,         % Do not sort at all. All entries are processed in citation order.
+% sorting=ydnt,         % Sort by year (descending), name, title
+ sorting=none,         % Do not sort at all. All entries are processed in citation order.
 ]{biblatex}
 \addbibresource{biblio.bib}
 
@@ -98,7 +98,8 @@
 \section{Education}
   \cventry{\small{Nov 2022 -- Current}}{PhD in Computer Science}{University of Trento}{Italy}{}{%
     \textbf{Topic}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
-    \emph{Goal}: Develop a holistic system that through Large Language Models and logic programming is able to plan and verify schedules for industrial robots and to execute them.  
+    \emph{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
+    \emph{GitHub}: idra-lab/PLOP 
   }
   \cventry{\small{Oct 2018 -- Jul 2022}}{Master Degree in Computer Science}{University of
   Trento}{Italy}{Final mark: 109}{%
@@ -153,18 +154,29 @@
     \end{itemize}
   }
 
-  \cventry{\small{Jul 2018 -- Oct 2018}}{Student}{University of Trento}{Italy}{}{%
-    Topics:
-    \begin{itemize}
-      \item Implementation on GPU of \textbf{path planning algorithms} for 
-        robotics applications;
-      \item Parallel computing of \textbf{clothoids} using CUDA. 
-    \end{itemize}
+  %\cventry{\small{Jul 2018 -- Oct 2018}}{Student}{University of Trento}{Italy}{}{%
+  %  Topics:
+  %  \begin{itemize}
+  %    \item Implementation on GPU of \textbf{path planning algorithms} for 
+  %      robotics applications;
+  %    \item Parallel computing of \textbf{clothoids} using CUDA. 
+  %  \end{itemize}
+  %}
+
+\section{Teaching Experience}
+  \cventry{\small{Fall 2023}}{\textmd{[TA]} Robot Planning \& its Applications}{University of Trento}{Italy}{}{%
+    \emph{Role}: Class lectures, laboratory exercises, and exams.
+  }
+  \cventry{\small{Fall 2023}}{\textmd{[Tutor]} Programming 101}{University of Trento}{Italy}{}{%
+    \emph{Role}: Extra exercises and clarifications for Programming 101 course.
+  }
+  \cventry{\small{Fall 2022}}{\textmd{[TA]} Real Time Operating Systems and Middlewares}{University of Trento}{Italy}{}{%
+    \emph{Role}: Class lectures and exams.
   }
 
 %%%% PUBLICATIONS %%%%
-\nocite{MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
-\citesinthissection{4}
+\nocite{saccon2023prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
+\citesinthissection{5}
 \printbibliography[title={Publications}]
 
 
@@ -191,20 +203,16 @@
   \cvitem{Programming Languages}{%
     \begin{tabular}{l}
       \multirow{2}{*}{
-        C, C++, Python, Prolog, Matlab, R, Latex, Java, Bash, JavaScript, PolyML
+        C, C++, Python, Prolog, CPLEX, Matlab, R, Latex, Java, Bash, JavaScript, PolyML
       }
     \end{tabular}
   }
   \cvitem{Technologies}{%
-    Git; CUDA; \textit{Robotics:} ROS, ROS2, MoveIt; \textit{LLMs}: GPT, LaMBDA; 
+    Git; CUDA; \textit{Robotics:} ROS, ROS2, Gazebo, MoveIt; \textit{LLMs}: GPT, LaMBDA; 
     \textit{Machine/Deep Learning:} PyTorch, Tensorflow; \textit{Iot:} Contiki-NG; 
     \textit{Web:} Django, NodeJS
   }
   \cvitem{Sys Admin}{Bash command line}
-
-\section{Languages}
-    \cvitem{Italian}{Mother tongue}
-    \cvitem{English}{Full professional knowledge and B2 certified}
 
 \section{Communication and Interpersonal Skills}
   \cvitem{}{
@@ -214,6 +222,17 @@
     2019, 2020, 2021, 2022). 
   }\vspace{-0.4cm}
 
+\section{Languages}
+    % \cvitem{Italian}{Mother tongue}
+    \cvitem{English}{Full professional knowledge and B2 certified}
+
+%\section{Professional References}
+%\cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
+%  Phone: +39 0461 283967 \quad Email: luigi.palopoli@unitn.it
+%}
+%\cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
+%  Phone: +39 3666023955 \quad Email: marco.roveri@unitn.it
+%}
 
 \vspace*{\fill}
     \begin{flushright}
