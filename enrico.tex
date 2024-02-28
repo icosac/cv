@@ -1,0 +1,273 @@
+\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\usepackage[utf8]{inputenc}
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\usepackage[scale=0.85]{geometry} % Reduce document margins (default: 0.8)
+\usepackage{gensymb} %used for the degree "°" symbol
+\usepackage{multicol}
+\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your nam
+
+
+\usepackage[% https://tex.stackexchange.com/questions/299915/how-to-add-a-bibliography-to-moderncv
+  backend=biber,
+  style=ieee,
+  defernumbers=true,
+% sorting=ydnt,         % Sort by year (descending), name, title
+ sorting=none,         % Do not sort at all. All entries are processed in citation order.
+]{biblatex}
+\addbibresource{biblio.bib}
+
+\makeatletter
+\newcommand{\citesinthissection}[1]{\xdef\@totalcites{#1}}
+% http://tex.stackexchange.com/q/66829/5764
+\newcounter{numbibentries}
+\renewbibmacro*{finentry}{\stepcounter{numbibentries}\finentry}
+% http://tex.stackexchange.com/q/123805/5764
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{labelprefix}%
+        \number\numexpr\@totalcites-\abx@field@labelnumber+1\relax}}
+     {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+      \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\makeatother
+
+%\nopagenumbers
+\usepackage{lastpage}
+\nopagenumbers%
+%\AtEndPreamble{%
+%    \AtBeginDocument{%
+%        \newlength{\pagenumberwidth} \settowidth{\pagenumberwidth}{\color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}}%
+%            \fancypagestyle{plain}{\fancyfoot[r]{\parbox[b]{\pagenumberwidth}{%
+%    \color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}
+%}}}
+%        \pagestyle{plain}}}
+
+\rfoot{\color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}}
+
+% Privacy (D.Lgs. 33/2013)
+\newif\ifPersonalData{}
+\PersonalDatatrue{}
+% \PersonalDatafalse{} % Uncomment to hide personal data
+
+\ifPersonalData%
+    \newcommand\pguard[1]{#1}
+\else
+    \newcommand\pguard[1]{}
+\fi
+
+
+\firstname{Enrico} % Your first name
+\familyname{Saccon} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+
+\ifPersonalData%
+    %\address{Via dei Giardini, 66}{38122 Trento (TN)}{Italy}
+    \mobile{+39~(339)~8242401}
+    \email{enricosaccon96@gmail.com}
+\fi
+%\homepage{saccon.org}
+\social[github]{icosac}
+%\extrainfo{}
+\photo[60pt][0.2pt]{Fototessera.png} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+%\quote{"A witty and playful quotation" - John Smith}
+
+\newcommand\Colorhref[3][black]{\href{#2}{\color{#1}#3}}
+%----------------------------------------------------------------------------------------
+\begin{document}
+\makecvtitle% Print the CV title
+%\pagestyle{empty}
+
+
+    %\cvitem{\large\color{color1}RESEARCH~INTERESTS}{%
+     \vspace{-0.5cm}
+     {\large\color{color1}RESEARCH~INTERESTS
+       \hspace*{\fill} \color{color2}
+        \textsc{planning, robotics, fleet management, parallel computing}
+     }
+
+\section{Education}
+  \cventry{\small{Nov 2022 -- Current}}{PhD in Computer Science}{University of Trento}{Italy}{}{%
+    \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
+    \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
+    \emph{GitHub}: idra-lab/PLOP 
+  }
+  \cventry{\small{Oct 2018 -- Jul 2022}}{Master Degree in Computer Science}{University of
+  Trento}{Italy}{Final mark: 109}{%
+    \textbf{Thesis title}: ``Comparison of Multi-Agent Path Finding Algorithms for an Industrial
+    Scenario.'' \newline
+    \textbf{Thesis argument}: managing a fleet of AGVs in a human populated 
+    environment. \newline
+    \textbf{Topics}: AGV control, robotics principles, path and goal planning, 
+    fleet control. \newline
+    Other strong acquired knowledge:
+    \begin{itemize}
+      \item Machine learning and deep learning (Tensorflow and PyTorch);
+      \item Real time operating systems; 
+      % \item Protocols and middleware for the IoT.
+    \end{itemize}
+  }
+  \cventry{\small{Sep 2015 -- Oct 2018}}{Bachelor Degree in Computer Science}{University of Trento}{Italy}{}{%
+      ``Implementation of GPU algorithms for robot path planning.''\newline
+      \textbf{Topics}: CUDA GPU programming, robot motion planning, comfort 
+      control.
+  }
+
+\section{Fellowships}
+  \cventry{\small{Sep 2022 -- Oct 2022}}{Research Fellowship -- ``Predoc``}{University of Trento}{Italy}{}{%
+    \textbf{Topics}: Multi-Agent Path Finding, fleet management\\
+    \textbf{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
+  }
+
+\section{Work Experience}
+  \cventry{\small{Sept 2019 -- Dec 2019}}{Computer Scientist}{CreateNet -- FBK}{Italy}{}{%
+    Work on cutting-edge technologies for control and optimization of
+    agricultural irrigation in a deployed system. \newline
+    \emph{Topics}: C programming language, LoRaWAN infrastructure, electronic 
+    sensor and actuators.
+  }
+  \cventry{\small{Jan 2019 -- Jul 2019}}{High School Teacher}{ITT Buonarroti-Pozzo}{Italy}{}{%
+    Taught computer science to high school students:
+    \newline 
+    1$^{st}$ year: mainly problem solving skills; \quad
+    2$^{nd}$ year: basics of C programming.
+  }
+
+\section{Research Experience}
+  \cventry{\small{Dec 2020 -- May 2021}}{Student}{University of Trento}{Italy}{}{%
+    \textbf{Topics}:
+    \begin{itemize}
+      \item Research on \textbf{Dubins} curves for optimal control of vehicles;
+      \item Implementation on \textbf{GPU} of dynamic programming for 
+        multi-point Dubinses;
+      \item \textbf{Energetic analysis} of different solutions from embedded 
+        systems to server based ones.
+    \end{itemize}
+  }
+
+  %\cventry{\small{Jul 2018 -- Oct 2018}}{Student}{University of Trento}{Italy}{}{%
+  %  Topics:
+  %  \begin{itemize}
+  %    \item Implementation on GPU of \textbf{path planning algorithms} for 
+  %      robotics applications;
+  %    \item Parallel computing of \textbf{clothoids} using CUDA. 
+  %  \end{itemize}
+  %}
+
+\section{Teaching Experience}
+  \cventry{\small{Fall 2023}}{\textmd{[TA]} Robot Planning \& its Applications}{University of Trento}{Italy}{}{%
+    \emph{Role}: Class lectures, laboratory exercises, and exams.
+  }
+  \cventry{\small{Fall 2023}}{\textmd{[Tutor]} Programming 101}{University of Trento}{Italy}{}{%
+    \emph{Role}: Extra exercises and clarifications for Programming 101 course.
+  }
+  \cventry{\small{Fall 2022}}{\textmd{[TA]} Real Time Operating Systems and Middlewares}{University of Trento}{Italy}{}{%
+    \emph{Role}: Class lectures and exams.
+  }
+
+%%%% PUBLICATIONS %%%%
+\nocite{saccon2023prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
+\citesinthissection{5}
+\printbibliography[title={Publications}]
+
+
+\section{Public Speaking}
+  \cventry{\small{Jul 2023}}{Speaker}{Prague}{Czech Republic}{}{
+    \textbf{16th International Symposium on Combinatorial Search (SoCS 2023)}\newline
+    Presented the extended abstract for the Doctoral Consortium: "Multi-Agent Open 
+    Framework: Developing a Holistic System to Solve MAPF"
+  }
+  \cventry{\small{Nov 2022}}{Speaker}{Udine}{Italy}{}{
+    \textbf{21st International Conference of the Italian Association for Artificial
+    Intelligence (AIxIA 2022)} \newline
+    Presented the conference paper: "Comparing Multi-Agent Path Finding Algorithms in a 
+    Real Industrial Scenario"
+  }
+  \cventry{\small{Jul 2021}}{Speaker}{Madrid (virtual)}{Spain}{}{
+    \textbf{IEEE COMPSAC 2021 Intelligent and Resilient Computing for a Collaborative
+    World}\newline
+    Presented the conference paper: "Robot Motion Planning: can GPUs be a Game Changer?"
+  }
+
+
+\section{Skills}
+  \cvitem{Programming Languages}{%
+    \begin{tabular}{l}
+      \multirow{2}{*}{C, C++, Python, Prolog, CPLEX, Matlab, R, Latex, Java, Bash, JavaScript, PolyML}
+    \end{tabular}
+  }
+  \cvitem{Technologies}{%
+    Git; CUDA; \textit{Robotics:} ROS, ROS2, Gazebo, MoveIt; \textit{LLMs}: GPT, LaMBDA; 
+    \textit{Machine/Deep Learning:} PyTorch, Tensorflow; \textit{Iot:} Contiki-NG; 
+    \textit{Web:} Django, NodeJS
+  }
+  % \cvitem{Sys Admin}{Bash command line}
+
+\section{Communication and Interpersonal Skills}
+  \cvitem{}{
+    Good teamworking skills learned through various projects assigned during
+    university courses and partecipations in Hackathon events (Hackathon Italia
+    2017, Hackathon FBK 2016, Hackathon Google 2018) and Google Hashcode (in
+    2019, 2020, 2021, 2022). 
+  }\vspace{-0.4cm}
+
+\section{Languages}
+    % \cvitem{Italian}{Mother tongue}
+    \cvitem{English}{Full professional knowledge}
+
+\section{Professional References}
+\cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
+  Phone: +39 0461 283967 \quad Email: luigi.palopoli@unitn.it
+}
+\cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
+  Phone: +39 366 6023955 \quad Email: marco.roveri@unitn.it
+}
+
+% \vspace*{\fill}
+% \begin{flushright}
+%   \begin{minipage}{.4\paperwidth}
+%     \centering
+%     \noindent\rule{.4\paperwidth}{0.4pt}
+%     \vspace{1em}
+%     Enrico Saccon
+%   \end{minipage}
+% \end{flushright}
+
+\vspace*{\fill}
+\begin{tabular}{p{0.4\paperwidth}p{0.05\paperwidth}p{0.4\paperwidth}}
+  \multirow{3}{*}{Date: \today} & & \\
+                                & & \noindent\rule{0.4\paperwidth}{0.4pt}\\
+                                & & \multicolumn{1}{c}{Enrico Saccon}\\
+\end{tabular}
+
+
+
+% \newpage
+% \noindent\makebox[\linewidth]{\rule{.9\paperwidth}{0.4pt}}
+% {\center\tiny
+%     % From template:
+%     % In compliance with the decree no. 196 dated 30/06/2003, I authorize the use of my personal details.\newline
+%     % Le informazioni qui contenute vengono rese ai sensi e per gli effetti degli artt. 46 e 47 del DPR 445/2000.
+%     % I hereby grant permission for the treatment of my personal data (in compliance with Italian law 196 – 06/30/2003 and art. 13 GDPR (2016/679) for all purposes related to the selection procedure.
+%     I hereby grant permission for the treatment of my personal data for all purposes related to the selection procedure, in compliance with Italian laws artt. 46 and 47 of DPR 445/2000.
+%     % From UniTN:
+%     % Le informazioni qui contenute vengono rese ai sensi e per gli effetti degli artt. 46 e 47 del DPR 445/2000.
+%     % Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
+% }
+
+% \lfoot{\today}
+\cfoot{
+  \center \tiny
+    I hereby grant permission for the treatment of my personal data for all purposes related to the selection procedure, in compliance with Italian laws artt. 46 and 47 of DPR 445/2000.
+}
+\thispagestyle{fancy}
+\end{document}
