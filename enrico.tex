@@ -9,7 +9,6 @@
 \setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
 %\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your nam
 
-
 \usepackage[% https://tex.stackexchange.com/questions/299915/how-to-add-a-bibliography-to-moderncv
   backend=biber,
   style=ieee,
@@ -40,23 +39,13 @@
   {\item}
 \makeatother
 
-%\nopagenumbers
 \usepackage{lastpage}
-\nopagenumbers%
-%\AtEndPreamble{%
-%    \AtBeginDocument{%
-%        \newlength{\pagenumberwidth} \settowidth{\pagenumberwidth}{\color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}}%
-%            \fancypagestyle{plain}{\fancyfoot[r]{\parbox[b]{\pagenumberwidth}{%
-%    \color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}
-%}}}
-%        \pagestyle{plain}}}
 
 \rfoot{\color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}}
 
-% Privacy (D.Lgs. 33/2013)
 \newif\ifPersonalData{}
 \PersonalDatatrue{}
-% \PersonalDatafalse{} % Uncomment to hide personal data
+%\PersonalDatafalse{} % Uncomment to hide personal data
 
 \ifPersonalData%
     \newcommand\pguard[1]{#1}
@@ -64,11 +53,8 @@
     \newcommand\pguard[1]{}
 \fi
 
-
 \firstname{Enrico} % Your first name
 \familyname{Saccon} % Your last name
-
-% All information in this block is optional, comment out any lines you don't need
 
 \ifPersonalData%
     %\address{Via dei Giardini, 66}{38122 Trento (TN)}{Italy}
@@ -79,10 +65,36 @@
 \social[github]{icosac}
 %\extrainfo{}
 \photo[60pt][0.2pt]{Fototessera.png} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
-%\quote{"A witty and playful quotation" - John Smith}
 
 \newcommand\Colorhref[3][black]{\href{#2}{\color{#1}#3}}
+
 %----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+% Sections
+\newif\ifEducation{}        \Educationtrue{}
+\newif\ifFellowships{}      \Fellowshipstrue{}
+\newif\ifWork{}             \Worktrue{}
+\newif\ifResearch{}         \Researchtrue{}
+\newif\ifTeaching{}         \Teachingtrue{}
+\newif\ifPublications{}     \Publicationstrue{}
+\newif\ifPublicSpeaking{}   \PublicSpeakingtrue{}
+\newif\ifSponsorships{}     \Sponsorshipstrue{}
+\newif\ifSkills{}           \Skillstrue{}
+\newif\ifSocialSkills{}     \SocialSkillstrue{}
+\newif\ifLanguages{}        \Languagestrue{}
+\newif\ifReferences{}       \Referencestrue{}
+
+\newif\ifMergeFellowship{}  \MergeFellowshiptrue{}
+\ifMergeFellowship{}
+  \Fellowshipsfalse{}
+\fi
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
 \begin{document}
 \makecvtitle% Print the CV title
 %\pagestyle{empty}
@@ -95,10 +107,14 @@
         \textsc{planning, robotics, fleet management, parallel computing}
      }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           EDUCATION                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifEducation
 \section{Education}
   \cventry{\small{Nov 2022 -- Current}}{PhD in Computer Science}{University of Trento}{Italy}{}{%
-    \textbf{Topic}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
-    \emph{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
+    \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
+    \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
     \emph{GitHub}: idra-lab/PLOP 
   }
   \cventry{\small{Oct 2018 -- Jul 2022}}{Master Degree in Computer Science}{University of
@@ -121,17 +137,27 @@
       \textbf{Topics}: CUDA GPU programming, robot motion planning, comfort 
       control.
   }
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          FELLOWSHIPS                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifFellowships
 \section{Fellowships}
   \cventry{\small{Sep 2022 -- Oct 2022}}{Research Fellowship -- ``Predoc``}{University of Trento}{Italy}{}{%
-    \emph{Topics}: Multi-Agent Path Finding, fleet management\\
-    \emph{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
+    \textbf{Topics}: Multi-Agent Path Finding, fleet management\\
+    \textbf{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
   }
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                        WORK EXPERIENCE                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifWork
 \section{Work Experience}
   \cventry{\small{Sept 2019 -- Dec 2019}}{Computer Scientist}{CreateNet -- FBK}{Italy}{}{%
-    Work on a cutting-edge deployed system for control and optimization of
-    agricultural irrigation. \newline
+    Work on cutting-edge technologies for control and optimization of
+    agricultural irrigation in a deployed system. \newline
     \emph{Topics}: C programming language, LoRaWAN infrastructure, electronic 
     sensor and actuators.
   }
@@ -141,10 +167,22 @@
     1$^{st}$ year: mainly problem solving skills; \quad
     2$^{nd}$ year: basics of C programming.
   }
+\fi
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                      RESEARCH EXPERIENCE                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifResearch
 \section{Research Experience}
+    \ifMergeFellowship
+      \cventry{\small{Sep 2022 -- Oct 2022}}{Research Fellowship -- ``Predoc``}{University of Trento}{Italy}{}{%
+        \textbf{Topics}: Multi-Agent Path Finding, fleet management\\
+        \textbf{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
+      }
+    \fi
   \cventry{\small{Dec 2020 -- May 2021}}{Student}{University of Trento}{Italy}{}{%
-    Topics:
+    \textbf{Topics}:
     \begin{itemize}
       \item Research on \textbf{Dubins} curves for optimal control of vehicles;
       \item Implementation on \textbf{GPU} of dynamic programming for 
@@ -162,7 +200,12 @@
   %    \item Parallel computing of \textbf{clothoids} using CUDA. 
   %  \end{itemize}
   %}
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                      TEACHING EXPERIENCE                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifTeaching
 \section{Teaching Experience}
   \cventry{\small{Fall 2023}}{\textmd{[TA]} Robot Planning \& its Applications}{University of Trento}{Italy}{}{%
     \emph{Role}: Class lectures, laboratory exercises, and exams.
@@ -173,13 +216,22 @@
   \cventry{\small{Fall 2022}}{\textmd{[TA]} Real Time Operating Systems and Middlewares}{University of Trento}{Italy}{}{%
     \emph{Role}: Class lectures and exams.
   }
+\fi
 
-%%%% PUBLICATIONS %%%%
-\nocite{saccon2023prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
-\citesinthissection{5}
-\printbibliography[title={Publications}]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          PUBLICATIONS                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPublications
+  %%%% PUBLICATIONS %%%%
+  \nocite{saccon2023prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
+  \citesinthissection{5}
+  \printbibliography[title={Publications}]
+\fi
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                        PUBLIC SPEAKING                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPublicSpeaking
 \section{Public Speaking}
   \cventry{\small{Jul 2023}}{Speaker}{Prague}{Czech Republic}{}{
     \textbf{16th International Symposium on Combinatorial Search (SoCS 2023)}\newline
@@ -197,14 +249,25 @@
     World}\newline
     Presented the conference paper: "Robot Motion Planning: can GPUs be a Game Changer?"
   }
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          SPONSORSHIPS                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSponsorships
+\section{Sponsorships}
+\cvitem{Jun 2024}{\textbf{ICAPS24 DC Reimbursement}, Banff, Canada. I was awarded a 300 euros reimbursement for the participation in ICAPS24 DC.}
+  \cvitem{Jul 2023}{\textbf{SoCS23 Travel Grant}, Prague, Czech Republic. I was awarded a travel grant of 400 euros.}
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             SKILLS                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSkills
 \section{Skills}
   \cvitem{Programming Languages}{%
     \begin{tabular}{l}
-      \multirow{2}{*}{
-        C, C++, Python, Prolog, CPLEX, Matlab, R, Latex, Java, Bash, JavaScript, PolyML
-      }
+      \multirow{2}{*}{C, C++, Python, Prolog, CPLEX, Matlab, R, Latex, Java, Bash, JavaScript, PolyML}
     \end{tabular}
   }
   \cvitem{Technologies}{%
@@ -213,7 +276,12 @@
     \textit{Web:} Django, NodeJS
   }
   % \cvitem{Sys Admin}{Bash command line}
+\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          SOCIAL SKILLS                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSocialSkills
 \section{Communication and Interpersonal Skills}
   \cvitem{}{
     Good teamworking skills learned through various projects assigned during
@@ -221,11 +289,21 @@
     2017, Hackathon FBK 2016, Hackathon Google 2018) and Google Hashcode (in
     2019, 2020, 2021, 2022). 
   }\vspace{-0.4cm}
+\fi 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           LANGUAGES                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifLanguages
 \section{Languages}
     % \cvitem{Italian}{Mother tongue}
     \cvitem{English}{Full professional knowledge}
+\fi 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           REFERENCES                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifReferences
 \section{Professional References}
 \cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
   Phone: +39 0461 283967 \quad Email: luigi.palopoli@unitn.it
@@ -233,6 +311,8 @@
 \cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
   Phone: +39 366 6023955 \quad Email: marco.roveri@unitn.it
 }
+\fi
+
 
 % \vspace*{\fill}
 % \begin{flushright}
@@ -273,3 +353,4 @@
 }
 \thispagestyle{fancy}
 \end{document}
+
