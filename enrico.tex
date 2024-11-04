@@ -13,8 +13,8 @@
   backend=biber,
   style=ieee,
   defernumbers=true,
-% sorting=ydnt,         % Sort by year (descending), name, title
- sorting=none,         % Do not sort at all. All entries are processed in citation order.
+  sorting=ydnt,         % Sort by year (descending), name, title
+%  sorting=none,         % Do not sort at all. All entries are processed in citation order.
 ]{biblatex}
 \addbibresource{biblio.bib}
 
@@ -113,7 +113,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifEducation
 \section{Education}
-  \cventry{\small{Nov 2022 -- Current}}{PhD in Computer Science}{University of Trento}{Italy}{}{%
+  \cventry{\small{Nov 2022 -- Current}}{PhD in Information Engineering and Computer Science}{University of Trento}{Italy}{}{%
     \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
     \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
     \emph{GitHub}: idra-lab/PLOP 
@@ -222,6 +222,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifTeaching
 \section{Teaching Experience}
+  \cventry{\small{Fall 2024}}{\textmd{[TA]} Robot Planning \& its Applications}{University of Trento}{Italy}{}{%
+    \emph{Role}: Class lectures, laboratory exercises, and exams.
+  }
   \cventry{\small{Fall 2023}}{\textmd{[TA]} Robot Planning \& its Applications}{University of Trento}{Italy}{}{%
     \emph{Role}: Class lectures, laboratory exercises, and exams.
   }
@@ -238,8 +241,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifPublications
   %%%% PUBLICATIONS %%%%
-  \nocite{saccon2023prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
-  \citesinthissection{5}
+  \nocite{pastorelli2024fast,saccon2024prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
+  \citesinthissection{6}
   \printbibliography[title={Publications}]
 \fi
 
@@ -248,8 +251,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifPublicSpeaking
 \section{Public Speaking}
+  \cventry{\small{Sept 2024}}{Speaker}{Santiago De Compostela}{Spain}{}{
+    \textbf{40th European Conference on Artificial Intelligence (ECAI 2024)}\newline
+    Presented the work "Adaptive and Scalable Knowledge Management for Robotic Applications via Probabilistic Logic Languages" at the Adjustable Autonomy and Physical Embodied Intelligence AAPEI 24 workshop during ECAI24.
+  }
   \cventry{\small{Jun 2024}}{Speaker}{Banff}{Canada}{}{
-    \textbf{34th International Conference on Automated Planning and Scheduling (ICAPS24)}\newline
+    \textbf{34th International Conference on Automated Planning and Scheduling 2024 (ICAPS24)}\newline
     Presented the paper for the Previously Published Paper track: "When Prolog Meets Generative Models: A New Approach for Managing Knowledge and Planning in Robotic Applications"
     Presented the extended abstract for the Doctoral Consortium: "Adaptive and Scalable Knowledge Management for Robotic Applications via Probabilistic Logic Languages"
   }
@@ -258,7 +265,7 @@
     Presented the main paper: "When Prolog Meets Generative Models: A New Approach for Managing Knowledge and Planning in Robotic Applications"
   }
   \cventry{\small{Jul 2023}}{Speaker}{Prague}{Czech Republic}{}{
-    \textbf{16th International Symposium on Combinatorial Search (SoCS 2023)}\newline
+    \textbf{16th International Symposium on Combinatorial Search 2023 (SoCS23)}\newline
     Presented the extended abstract for the Doctoral Consortium: "Multi-Agent Open 
     Framework: Developing a Holistic System to Solve MAPF"
   }
@@ -280,7 +287,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifSponsorships
 \section{Sponsorships}
-  \cvitem{Jun 2024}{\textbf{ICAPS24 DC Support}, Banff, Canada. As part of the DC, I was awarded a support of XXXCAD to register at the ICAPS conference.}
+  \cvitem{Jun 2024}{\textbf{ICAPS24 DC Support}, Banff, Canada. As part of the DC, I was awarded a support of $\sim300$\$ to register at the ICAPS24 conference.}
   \cvitem{Jul 2023}{\textbf{SoCS23 Travel Grant}, Prague, Czech Republic. I was awarded a travel grant of 400 euros.}
 \fi
 
@@ -291,13 +298,13 @@
 \section{Skills}
   \cvitem{Programming Languages}{%
     \begin{tabular}{l}
-      \multirow{2}{*}{C, C++, Python, Prolog, IBM CPLEX, Prolog, Matlab, R, Latex, Java, Bash, JavaScript, PolyML}
+      \multirow{2}{*}{C, C++, Python, Prolog, Matlab, R, Latex, Java, Bash, JavaScript, PolyML}
     \end{tabular}
   }
   \cvitem{Technologies}{%
-    \textbf{General:} Git; CUDA; OR-tools; 
-    \textbf{LLMs}: GPT\{3.5, 4\}, LaMBDA, Gemini; 
-    \textbf{Robotics:} ROS, ROS2, Gazebo, MoveIt; 
+    \textbf{General:} IBM CPLEX, Git; CUDA; OR-tools; 
+    \textbf{LLMs}: GPT, LaMBDA, Gemini; 
+    \textbf{Robotics:} ROS, ROS2, Gazebo, MoveIt;
     \textbf{Machine/Deep Learning:} PyTorch, Tensorflow; 
     \textbf{Iot:} Contiki-NG; 
     \textbf{Web:} Django, NodeJS
