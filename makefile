@@ -1,6 +1,7 @@
 PHONY_TARGETS := all main enrico publications pubs
 .PHONY: $(PHONY_TARGETS)
 
+# PRIVATE=1 includes personal data; PRIVATE=0 builds the public CV.
 PRIVATE ?= 0
 
 out/:
@@ -14,7 +15,7 @@ pubs: out/
 main: enrico
 
 enrico: out/
-	PRIVATE=$(PRIVATE) latexmk enrico.tex
+	PRIVATE=$(PRIVATE) latexmk -g enrico.tex
 
 all: main pubs
 

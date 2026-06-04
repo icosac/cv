@@ -4,6 +4,7 @@ add_cus_dep('acn', 'acr', 0, 'run_makeglossaries');
 $out_dir = 'out';
 $private_data_file = "$out_dir/private-data.tex";
 
+no warnings 'redefine';
 sub run_makeglossaries {
   my ($base_name, $path) = fileparse( $_[0] ); #handle -outdir param by splitting path and file, ...
   pushd $path; # ... cd-ing into folder first, then running makeglossaries ...
@@ -17,20 +18,10 @@ sub run_makeglossaries {
 
   popd; # ... and cd-ing back again
 }
+use warnings 'redefine';
 
 sub enrico_wants_personal_data {
-  return 1 if env_true('PRIVATE');
-  return 0 unless open(my $fh, '<', 'enrico.tex');
-
-  my $wants_personal_data = 0;
-  while (my $line = <$fh>) {
-    $line =~ s/%.*$//;
-    $wants_personal_data = 1 if $line =~ /\\PersonalDatatrue\b/;
-    $wants_personal_data = 0 if $line =~ /\\PersonalDatafalse\b/;
-  }
-
-  close($fh);
-  return $wants_personal_data;
+  return env_true('PRIVATE');
 }
 
 sub env_true {
@@ -66,7 +57,7 @@ sub read_dotenv_value {
 
 sub latex_escape {
   my ($value) = @_;
-  $value =~ s/([\\{}#%&_$])/\\$1/g;
+  $value =~ s/([\\{}#%&_\$])/\\$1/g;
   return $value;
 }
 
