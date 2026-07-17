@@ -67,6 +67,6 @@ jobs:
           make_latest: true
           fail_on_unmatched_files: true
           files: |
-            out/acaemic.pdf
+            out/academic.pdf
             out/industrial.pdf
             out/publications.pdf
