@@ -92,6 +92,7 @@
 \newif\ifSummerSchool{}     \SummerSchooltrue{}
 \newif\ifResearch{}         \Researchtrue{}
 \newif\ifTeaching{}         \Teachingtrue{}
+\newif\ifSoftware{}         \Softwaretrue{}
 \newif\ifPublications{}     \Publicationstrue{}
 \newif\ifPublicSpeaking{}   \PublicSpeakingtrue{}
 \newif\ifSponsorships{}     \Sponsorshipstrue{}
@@ -101,6 +102,7 @@
 \newif\ifLanguages{}        \Languagestrue{}
 \newif\ifReferences{}       \Referencestrue{}
 
+% Merges Fellowship into Research Experience section
 \newif\ifMergeFellowship{}  \MergeFellowshiptrue{}
 \ifMergeFellowship{}
   \Fellowshipsfalse{}
@@ -122,6 +124,12 @@
         \textsc{planning, robotics, fleet management, parallel computing}
      }
 
+\section{Profile}
+\cvitem{}{PhD researcher in AI and robotics working on LLM-assisted planning, task and motion 
+planning, and executable temporal plans for robotic systems. Experience with ROS/ROS2, simulation, 
+optimization, logic programming, and research software development. Interested in physical AI 
+systems that connect model training, validation, and real-world robot deployment.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                           EDUCATION                                            %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,9 +138,9 @@
   \cventry{\small{Nov 2022 -- Current}}{PhD in Information Engineering and Computer Science}{University of Trento}{Italy}{}{%
     \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
     \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
-    \emph{GitHub}: idra-lab/PLOP 
+    \emph{GitHub}: idra-lab/PLANTOR
   }
-  \cventry{\small{Oct 2018 -- Jul 2022}}{Master Degree in Computer Science}{University of
+  \cventry{\small{Oct 2018 -- Jul 2022}}{Master's Degree in Computer Science}{University of
   Trento}{Italy}{Final mark: 109}{%
     \textbf{Thesis title}: ``Comparison of Multi-Agent Path Finding Algorithms for an Industrial
     Scenario.'' \newline
@@ -147,12 +155,13 @@
       % \item Protocols and middleware for the IoT.
     \end{itemize}
   }
-  \cventry{\small{Sep 2015 -- Oct 2018}}{Bachelor Degree in Computer Science}{University of Trento}{Italy}{}{%
+  \cventry{\small{Sep 2015 -- Oct 2018}}{Bachelor's Degree in Computer Science}{University of Trento}{Italy}{}{%
       ``Implementation of GPU algorithms for robot path planning.''\newline
       \textbf{Topics}: CUDA GPU programming, robot motion planning, comfort 
       control.
   }
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          FELLOWSHIPS                                           %%
@@ -165,17 +174,19 @@
   }
 \fi
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                        WORK EXPERIENCE                                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifWork
 \section{Work Experience}
   \cventry{\small{Mar 2025 -- Nov 2025}}{Research Internship}{Cognitive Robotics Department -- DLR}{Munich}{Germany}{%
-    Worked on integrating task and motion planning to develop an holistic system for the generation of executable temporal plan for multiple agents with theoretical guarantees. \newline
-    \emph{Topics}: Task and Motion Planning (TAMP), motion primitives, LLMs, optimization.
+    Worked on integrating task and motion planning for the generation of executable temporal plans for multi-agent robotic systems. 
+    Focused on connecting symbolic task-level reasoning with motion primitives, optimization, and execution-oriented validation. \newline
+    \emph{Topics}: Task and Motion Planning (TAMP), motion primitives, temporal planning, LLMs, optimization, robotic execution.
   }
   \cventry{\small{Sept 2019 -- Dec 2019}}{Computer Scientist}{CreateNet -- FBK}{Trento}{Italy}{%
-    Work on cutting-edge technologies for control and optimization of
+    Worked on cutting-edge technologies for control and optimization of
     agricultural irrigation in a deployed system. \newline
     \emph{Topics}: C programming language, LoRaWAN infrastructure, electronic 
     sensor and actuators.
@@ -203,8 +214,7 @@
   \cventry{\small{Dec 2020 -- May 2021}}{Research Project as Student}{University of Trento}{Italy}{}{%
     \begin{itemize}
       \item Research on \textbf{Dubins} curves for optimal control of vehicles;
-      \item Implementation on \textbf{GPU} of dynamic programming for 
-        multi-point Dubinses;
+      \item Implementation on \textbf{GPU} of dynamic programming for the multi-point Dubins problem;
       \item \textbf{Energetic analysis} of different solutions from embedded 
         systems to server based ones.
     \end{itemize}
@@ -265,24 +275,49 @@
   }
 \fi
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           ARTEFACTS                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSoftware
+\section{Software and Research Artifacts}
+  \cvitem{PLANTOR}{A framework for task and motion planning with LLMs and logic programming. \newline
+    \emph{GitHub}: \href{https://github.com/idra-lab/PLANTOR}{idra-lab/PLANTOR}} %\newline
+    % \emph{GitHub}: icosac/PLANTOR\_improved}
+  \cvitem{MDP Generator}{A framework for generating MDPs through logic programming and large language models. \newline
+    \emph{GitHub}: \href{https://github.com/idra-lab/prolog_mdp}{idra-lab/prolog\_mdp}}
+  \cvitem{MPDP}{A framework to solve multi-point motion planning problems exploiting Dynamic Programming for Dubins and Reeds-Shepp. \newline
+    \emph{GitHub}: \href{https://github.com/icosac/MPDP}{icosac/MPDP}}
+  \cvitem{MAOF}{A framework for testing and comparing different Multi Agent Path Finding (MAPF) algorithms. \newline
+    \emph{GitLab}: \href{https://gitlab.com/chaff800/MAOF}{chaff800/MAOF}}
+  
+\fi
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          PUBLICATIONS                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifPublications
   %%%% PUBLICATIONS %%%%
-  \nocite{AutomatedMDPs,3PDP_ML_MDPI,plantor,pastorelli2025fast,saccon2024prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
-  \citesinthissection{9}
+  \nocite{3PDP_rect,AutomatedMDPs,3PDP_ML_MDPI,plantor,pastorelli2025fast,saccon2024prolog,MAOFExtAbstract,ComparingMAPF,GPUsGameChanger,IterativeApproach}
+  \citesinthissection{10}
   \printbibliography[title={Publications}]
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                        PUBLIC SPEAKING                                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifPublicSpeaking
-\section{Public Speaking}
+\section{Conference Presentations}
+  \cventry{\small{Jun 2026}}{Poster}{Vienna}{Austria}{}{
+    \textbf{International Conference on Robotics and Automation 2026 (ICRA26)}\newline
+    Presented the poster for the IEEE R-AL paper "Automated Generation of MDPs Using Logic Programming and LLMs for Robotic Applications".\newline
+    Presented the poster for the IEEE ICRA paper "Complexity Reduction of the Three-Point Dubins Problem (3PDP) Via Symmetry Exploitation for Machine Learning Purposes".
+  }
   \cventry{\small{Oct 2025}}{Speaker}{Hangzhou}{China}{}{
     \textbf{International Conference on Intelligent Robots and Systems 2025 (IROS25)}\newline
-    Presented the IEEE R-AL paper "Fast shortest path polyline smoothing with $G^1$ continuity and bounded curvature".
+    Presented the IEEE R-AL paper "Fast shortest path polyline smoothing with $G^1$ continuity and bounded curvature".\newline
     Presented the work titled "Planning with Natural Language for Task-Oriented Robots" at the SPACE workshop.
   }
   \cventry{\small{Sep 2025}}{Speaker}{Rende}{Italy}{}{
@@ -295,73 +330,87 @@
   }
   \cventry{\small{Jun 2024}}{Speaker}{Banff}{Canada}{}{
     \textbf{34th International Conference on Automated Planning and Scheduling 2024 (ICAPS24)}\newline
-    Presented the paper for the Previously Published Paper track: "When Prolog Meets Generative Models: A New Approach for Managing Knowledge and Planning in Robotic Applications"
+    Presented the paper for the Previously Published Paper track: "When Prolog Meets Generative Models: A New Approach for Managing Knowledge and Planning in Robotic Applications"\newline
     Presented the extended abstract for the Doctoral Consortium: "Adaptive and Scalable Knowledge Management for Robotic Applications via Probabilistic Logic Languages"
   }
   \cventry{\small{May 2024}}{Speaker}{Tokyo}{Japan}{}{
-    \textbf{International Conference on Automation and Control 2024 (ICRA24)}\newline
+    \textbf{International Conference on Robotics and Automation 2024 (ICRA24)}\newline
     Presented the main paper: "When Prolog Meets Generative Models: A New Approach for Managing Knowledge and Planning in Robotic Applications"
   }
   \cventry{\small{Jul 2023}}{Speaker}{Prague}{Czech Republic}{}{
     \textbf{16th International Symposium on Combinatorial Search 2023 (SoCS23)}\newline
-    Presented the extended abstract for the Doctoral Consortium: "Multi-Agent Open 
-    Framework: Developing a Holistic System to Solve MAPF"
+    Presented the extended abstract for the Doctoral Consortium: "Multi-Agent Open Framework: Developing a Holistic System to Solve MAPF"
   }
   \cventry{\small{Nov 2022}}{Speaker}{Udine}{Italy}{}{
     \textbf{21st International Conference of the Italian Association for Artificial
     Intelligence (AIxIA 2022)} \newline
-    Presented the conference paper: "Comparing Multi-Agent Path Finding Algorithms in a 
-    Real Industrial Scenario"
+    Presented the conference paper: "Comparing Multi-Agent Path Finding Algorithms in a Real Industrial Scenario"
   }
   \cventry{\small{Jul 2021}}{Speaker}{Madrid (virtual)}{Spain}{}{
-    \textbf{IEEE COMPSAC 2021 Intelligent and Resilient Computing for a Collaborative
-    World}\newline
+    \textbf{IEEE COMPSAC 2021 Intelligent and Resilient Computing for a Collaborative World}\newline
     Presented the conference paper: "Robot Motion Planning: can GPUs be a Game Changer?"
   }
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          REVIEWS                                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifReviews
-\section{Reviews}
-  \cvitem{-}{Reviewer for \textbf{IEEE R-AL}}
-  \cvitem{2026}{PC Member \textbf{CARLA 2026} @ FLOC26}
-  \cvitem{2026}{PC Member \textbf{ICAPS 2026}}
-  \cvitem{2025}{Reviewer for \textbf{IEEE ICRA 2026}}
-  \cvitem{2025}{PC Member for \textbf{PAIS 2025}}
-  \cvitem{2025}{Reviewer for \textbf{ICAPS-25}}
-  \cvitem{2025}{Subreviewer for \textbf{SoCS-25}}
+\section{Academic Service}
+  \cvitem{Reviewing}{\textbf{IEEE R-AL}, \textbf{IEEE ICRA 2026}, \textbf{ICAPS-25}, \textbf{SoCS-25}}
+  \cvitem{Program Committee}{\textbf{AAAI 2027}, \textbf{CARLA 2026} @ FLOC26, \textbf{ICAPS 2026}, \textbf{PAIS 2025}}
+  % \cvitem{-}{Reviewer for \textbf{IEEE R-AL}}
+  % \cvitem{2026}{PC Member \textbf{CARLA 2026} @ FLOC26}
+  % \cvitem{2026}{PC Member \textbf{ICAPS 2026}}
+  % \cvitem{2025}{Reviewer for \textbf{IEEE ICRA 2026}}
+  % \cvitem{2025}{PC Member for \textbf{PAIS 2025}}
+  % \cvitem{2025}{Reviewer for \textbf{ICAPS-25}}
+  % \cvitem{2025}{Subreviewer for \textbf{SoCS-25}}
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          SPONSORSHIPS                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifSponsorships
-\section{Sponsorships}
+\section{Awards and Grants}
   \cvitem{Jun 2024}{\textbf{ICAPS24 DC Support}, Banff, Canada. As part of the DC, I was awarded a support of $\sim300$\$ to register at the ICAPS24 conference.}
   \cvitem{Jul 2023}{\textbf{SoCS23 Travel Grant}, Prague, Czech Republic. I was awarded a travel grant of 400 euros.}
 \fi
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                             SKILLS                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \ifSkills
+% \section{Skills}
+%   \cvitem{Programming Languages}{%
+%     \begin{tabular}{l}
+%       \multirow{2}{*}{C, C++, Python, Prolog, Matlab, Bash, JavaScript}
+%     \end{tabular}
+%   }
+%   \cvitem{Technologies}{%
+%     \textbf{General:} Git, CUDA, OR-tools, IBM CPLEX; 
+%     \textbf{LLMs}: Azure SDK, HuggingFace Transformers, vLLM; 
+%     \textbf{Robotics:} ROS, ROS2, Gazebo, MoveIt;
+%     \textbf{Machine/Deep Learning:} PyTorch, Tensorflow; 
+%     \textbf{Web:} Django, NodeJS
+%   }
+%   % \cvitem{Sys Admin}{Bash command line}
+% \fi
+
 \ifSkills
 \section{Skills}
-  \cvitem{Programming Languages}{%
-    \begin{tabular}{l}
-      \multirow{2}{*}{C, C++, Python, Prolog, Matlab, Bash, JavaScript}
-    \end{tabular}
-  }
-  \cvitem{Technologies}{%
-    \textbf{General:} Git, CUDA, OR-tools, IBM CPLEX; 
-    \textbf{LLMs}: Azure SDK, HuggingFace Transformers, vLLM; 
-    \textbf{Robotics:} ROS, ROS2, Gazebo, MoveIt;
-    \textbf{Machine/Deep Learning:} PyTorch, Tensorflow; 
-    \textbf{Web:} Django, NodeJS
-  }
-  % \cvitem{Sys Admin}{Bash command line}
+
+\cvitem{AI Planning}{Multi-agent planning, task and temporal planning, TAMP, MAPF, MDPs, STNs, logic programming, probabilistic reasoning.}
+\cvitem{Robotics}{ROS(1,2), Gazebo, MoveIt, motion planning, AGV fleet management.}
+\cvitem{Optimization}{OR-Tools, IBM CPLEX, constraint optimization, scheduling, dynamic programming.}
+\cvitem{LLMs and ML}{Azure OpenAI SDK, Hugging Face Transformers, vLLM, PyTorch, TensorFlow, prompt-based knowledge extraction, LLM evaluation pipelines.}
+\cvitem{Programming}{Python, C, C++, Prolog, MATLAB, Bash, JavaScript.}
+\cvitem{Software Tools}{Git, CUDA, Linux, Django, Node.js.}
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          SOCIAL SKILLS                                         %%
@@ -370,7 +419,7 @@
 \section{Communication and Interpersonal Skills}
   \cvitem{}{
     Good teamworking skills learned through various projects assigned during
-    university courses and partecipations in Hackathon events (Hackathon Italia
+    university courses and participations in Hackathon events (Hackathon Italia
     2017, Hackathon FBK 2016, Hackathon Google 2018) and Google Hashcode (in
     2019, 2020, 2021, 2022). 
   }\vspace{-0.4cm}
@@ -397,6 +446,9 @@
   \pguard{Phone: \PrivateMarcoNumber \quad} Email: marco.roveri@unitn.it
 }
 \fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \vspace*{\fill}

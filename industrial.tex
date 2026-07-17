@@ -1,0 +1,412 @@
+\documentclass[10pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\usepackage[scale=0.85]{geometry} % Reduce document margins (default: 0.8)
+\usepackage{multicol}
+\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your nam
+
+\usepackage[% https://tex.stackexchange.com/questions/299915/how-to-add-a-bibliography-to-moderncv
+  backend=biber,
+  style=ieee,
+  defernumbers=true,
+  sorting=ydnt,         % Sort by year (descending), name, title
+%  sorting=none,         % Do not sort at all. All entries are processed in citation order.
+]{biblatex}
+\addbibresource{biblio.bib}
+
+\makeatletter
+\newcommand{\citesinthissection}[1]{\xdef\@totalcites{#1}}
+% http://tex.stackexchange.com/q/66829/5764
+\newcounter{numbibentries}
+\renewbibmacro*{finentry}{\stepcounter{numbibentries}\finentry}
+% http://tex.stackexchange.com/q/123805/5764
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{% label format from numeric.bbx
+        \printfield{labelprefix}%
+        \number\numexpr\@totalcites-\abx@field@labelnumber+1\relax}}
+     {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+      \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+\makeatother
+
+\usepackage{lastpage}
+
+\rfoot{\color{color2}\pagenumberfont\thepage~of~\pageref{LastPage}}
+
+\newif\ifPersonalData{}
+\ifdefined\PrivateBuild
+  \PersonalDatatrue{}
+\else
+  \PersonalDatafalse{}
+\fi
+\newif\ifPrivateDataAvailable{}
+\PrivateDataAvailablefalse{}
+
+\ifPersonalData%
+  \IfFileExists{out/private-data.tex}{%
+    \input{out/private-data.tex}%
+    \PrivateDataAvailabletrue{}%
+  }{%
+    \PackageWarningNoLine{enrico}{PersonalData is true, but out/private-data.tex is missing. Building public CV}%
+  }%
+\fi
+
+\ifPrivateDataAvailable%
+    \newcommand\pguard[1]{#1}
+\else
+    \newcommand\pguard[1]{}
+\fi
+
+\firstname{Enrico} % Your first name
+\familyname{Saccon} % Your last name
+
+\ifPrivateDataAvailable%
+  % \address{Trento}{Italy}{Open to relocate}
+  \mobile{\PrivatePhoneNumber}
+  \photo[60pt][0.2pt]{picture.png} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+\fi
+\email{enricosaccon96@gmail.com}
+\homepage{enricosaccon.me}
+\social[github]{icosac}
+\extrainfo{Trento, Italy $\vert$ Open to relocate}
+
+\newcommand\Colorhref[3][black]{\href{#2}{\color{#1}#3}}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+% Sections
+\newif\ifEducation{}        \Educationtrue{}
+\newif\ifFellowships{}      \Fellowshipstrue{}
+\newif\ifWork{}             \Worktrue{}
+\newif\ifConferenceOrg{}    \ConferenceOrgtrue{}
+\newif\ifSummerSchool{}     \SummerSchooltrue{}
+\newif\ifResearch{}         \Researchtrue{}
+\newif\ifTeaching{}         \Teachingtrue{}
+\newif\ifSoftware{}         \Softwaretrue{}
+\newif\ifPublications{}     \Publicationstrue{}
+\newif\ifPublicSpeaking{}   \PublicSpeakingtrue{}
+\newif\ifSponsorships{}     \Sponsorshipstrue{}
+\newif\ifReviews{}          \Reviewstrue{}
+\newif\ifSkills{}           \Skillstrue{}
+\newif\ifSocialSkills{}     \SocialSkillstrue{}
+\newif\ifLanguages{}        \Languagestrue{}
+\newif\ifReferences{}       \Referencesfalse{}
+
+% Merges Fellowship into Research Experience section
+\newif\ifMergeFellowship{}  \MergeFellowshiptrue{}
+\ifMergeFellowship{}
+  \Fellowshipsfalse{}
+\fi
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\makecvtitle% Print the CV title
+%\pagestyle{empty}
+
+
+    %\cvitem{\large\color{color1}RESEARCH~INTERESTS}{%
+     \vspace{-0.5cm}
+     {
+      \large
+      \color{color1}RESEARCH~INTERESTS:
+      \color{color2}\textsc{llm-assisted robotics, task and motion planning, embodied ai}
+     }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                            PROFILE                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Profile}
+\cvitem{}{PhD researcher in AI and robotics working on LLM-assisted planning, task and motion 
+planning, and executable temporal plans for robotic systems. Experience with ROS/ROS2, simulation, 
+optimization, logic programming, and research software development. Focused on building AI-enabled 
+robotic systems that connect high-level reasoning, validation, and real-world deployment.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             SKILLS                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSkills
+\section{Skills}
+
+\cvitem{AI Planning}{Multi-agent planning, task (temporal) planning, task and motion planning, multi-agent path finding, logic programming, probabilistic reasoning (MDPs).}
+\cvitem{Robotics}{ROS(1,2), Gazebo, MoveIt, motion planning.}
+\cvitem{Optimization}{OR-Tools, IBM CPLEX, constraint optimization, scheduling, dynamic programming.}
+\cvitem{LLMs and ML}{Azure OpenAI SDK, Hugging Face Transformers, vLLM, PyTorch, TensorFlow, prompt-based knowledge extraction, prompt validation, reproducible experiments for LLM-assisted robotic planning systems.}
+\cvitem{Programming}{Python, C, C++, Prolog, MATLAB, Bash, JavaScript.}
+\cvitem{Software Tools}{Git, CUDA, Linux, Django, Node.js.}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                        WORK EXPERIENCE                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifWork
+\section{Work Experience}
+  \cventry{\small{Mar 2025 -- Nov 2025}}{Research Internship}{Cognitive Robotics Department -- DLR}{Munich}{Germany}{%
+    Worked on integrating task and motion planning for the generation of executable temporal plans for multi-agent robotic systems. 
+    Focused on connecting symbolic task-level reasoning with imitation learning (KMP), optimization, and execution-oriented validation. \newline
+    \emph{Topics}: Task and Motion Planning (TAMP), Kernelized Movement Primitives (KMP), temporal planning, LLMs, optimization, robotic execution.
+  }
+  \cventry{\small{Sept 2019 -- Dec 2019}}{Computer Scientist}{CreateNet -- FBK}{Trento}{Italy}{%
+    Worked on cutting-edge technologies for control and optimization of
+    agricultural irrigation in a deployed system. \newline
+    \emph{Topics}: C programming language, LoRaWAN infrastructure, electronic 
+    sensor and actuators.
+  }
+  \cventry{\small{Jan 2019 -- Jul 2019}}{High School Teacher}{ITT Buonarroti-Pozzo}{Trento}{Italy}{%
+    Taught computer science to high school students:
+    \newline 
+    1$^{st}$ year: mainly problem solving skills; \quad
+    2$^{nd}$ year: basics of C programming.
+  }
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           EDUCATION                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifEducation
+\section{Education}
+  \cventry{\small{Nov 2022 -- Current}}{PhD in Information Engineering and Computer Science}{University of Trento}{Italy}{}{%
+    \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
+    \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
+    \emph{GitHub}: idra-lab/PLANTOR
+  }
+  \cventry{\small{Oct 2018 -- Jul 2022}}{Master's Degree in Computer Science}{University of
+  Trento}{Italy}{Final mark: 109}{%
+    \textbf{Thesis title}: ``Comparison of Multi-Agent Path Finding Algorithms for an Industrial
+    Scenario.'' \newline
+    \textbf{Thesis argument}: managing a fleet of AGVs in a human populated 
+    environment. \newline
+    \textbf{Topics}: AGV control, robotics principles, path and goal planning, 
+    fleet control. \newline
+    Other strong acquired knowledge:
+    \begin{itemize}
+      \item Machine learning and deep learning (Tensorflow and PyTorch);
+      \item Real time operating systems; 
+      % \item Protocols and middleware for the IoT.
+    \end{itemize}
+  }
+  \cventry{\small{Sep 2015 -- Oct 2018}}{Bachelor's Degree in Computer Science}{University of Trento}{Italy}{}{%
+      ``Implementation of GPU algorithms for robot path planning.''\newline
+      \textbf{Topics}: CUDA GPU programming, robot motion planning, comfort 
+      control.
+  }
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          FELLOWSHIPS                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifFellowships
+\section{Fellowships}
+  \cventry{\small{Sep 2022 -- Oct 2022}}{Research Fellowship -- ``Predoc``}{University of Trento}{Italy}{}{%
+    \textbf{Topics}: Multi-Agent Path Finding, fleet management\\
+    \textbf{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
+  }
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                      RESEARCH EXPERIENCE                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifResearch
+\section{Research Experience}
+  \ifMergeFellowship
+    \cventry{\small{Sep 2022 -- Oct 2022}}{Research Fellowship -- ``Predoc``}{University of Trento}{Italy}{}{%
+        \textbf{Topics}: Multi-Agent Path Finding, fleet management\\
+        \textbf{Goal}: Creation of a framework encompassing different MAPF algorithms for testing and scalability analysis
+      }
+  \fi
+  \cventry{\small{Dec 2020 -- May 2021}}{Research Project as Student}{University of Trento}{Italy}{}{%
+    \begin{itemize}
+      \item Research on \textbf{Dubins} curves for optimal control of vehicles;
+      \item Implementation on \textbf{GPU} of dynamic programming for the multi-point Dubins problem;
+      \item \textbf{Energetic analysis} of different solutions from embedded 
+        systems to server based ones.
+    \end{itemize}
+  }
+
+  %\cventry{\small{Jul 2018 -- Oct 2018}}{Student}{University of Trento}{Italy}{}{%
+  %  Topics:
+  %  \begin{itemize}
+  %    \item Implementation on GPU of \textbf{path planning algorithms} for 
+  %      robotics applications;
+  %    \item Parallel computing of \textbf{clothoids} using CUDA. 
+  %  \end{itemize}
+  %}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           ARTEFACTS                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSoftware
+\section{Software and Research Artifacts}
+  \cvitem{PLANTOR}{A framework for task and motion planning with LLMs and logic programming. \newline
+    \emph{GitHub}: \href{https://github.com/idra-lab/PLANTOR}{idra-lab/PLANTOR}} %\newline
+    % \emph{GitHub}: icosac/PLANTOR\_improved}
+  \cvitem{MDP Generator}{A framework for generating MDPs through logic programming and large language models. \newline
+    \emph{GitHub}: \href{https://github.com/idra-lab/prolog_mdp}{idra-lab/prolog\_mdp}}
+  \cvitem{MPDP}{A framework to solve multi-point motion planning problems exploiting dynamic programming for Dubins and Reeds-Shepp. It also employs ML and DL models to improve performance.\newline
+    \emph{GitHub}: \href{https://github.com/icosac/MPDP}{icosac/MPDP}}
+  \cvitem{MAOF}{A framework for testing and comparing different Multi-Agent Path Finding (MAPF) algorithms. \newline
+    \emph{GitLab}: \href{https://gitlab.com/chaff800/MAOF}{chaff800/MAOF}}
+  
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          PUBLICATIONS                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPublications
+  %%%% PUBLICATIONS %%%%
+  \nocite{3PDP_rect,AutomatedMDPs,plantor,pastorelli2025fast,saccon2024prolog,GPUsGameChanger}
+  \citesinthissection{6}
+  \printbibliography[title={Selected Publications}]
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                        PUBLIC SPEAKING                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifPublicSpeaking
+\section{Selected Conference Presentations}
+  \cvitem{2026}{ICRA: Presented work on automated MDP generation using logic programming and LLMs for robotic applications.}
+  \cvitem{2025}{IROS: Presented work on the three-point Dubins problem with machine learning models.}
+  \cvitem{2024}{ICRA \& ICAPS: Presented work on generating Prolog-based knowledge management with LLMs and planning in robotics.}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                      TEACHING EXPERIENCE                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifTeaching
+\section{Teaching Experience}
+  \cvitem{2023--2026}{Teaching Assistant / Tutor, Robot Planning \& its Applications. Lectures, laboratory exercises, and exams.}
+  \cvitem{2022--2023}{Teaching Assistant for Real Time Operating Systems and Programming 101.}
+\fi
+
+
+\section{Training, Leadership, and Communication}
+  \cvitem{Training}{ICAPS 12th Summer School on task and motion planning, Banff, Canada, 2024. EUSCOTHA Winter School on control theory and applications, University of Trento, 2024.}
+  \cvitem{Conference organization}{Local chair for NGEN-AI 2026, IDFC 2026, and QUANCOM 2026, supporting the local organization of international AI-related conferences hosted in Trento.}
+  \cvitem{Collaboration}{Worked across academic, industrial, and international research environments, including University of Trento, FBK, and DLR. Participated in Hackathon Italia, Hackathon FBK, Hackathon Google, and Google Hash Code, with emphasis on rapid prototyping, algorithmic problem solving, and teamwork.}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%                                    CONFERENCE ORGANIZATION                                     %%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \ifConferenceOrg
+% \section{Conference Organization}
+%   \cventry{September 2026}{Local chair}{Next Generation AI Systems (NGEN-AI 2026)}{Trento}{Italy}{}
+%   \cventry{September 2026}{Local chair}{The International Conference on Intelligent Digital Forensics and Cybersecurity (IDFC 2026)}{Trento}{Italy}{}
+%   \cventry{September 2026}{Local chair}{The International Conference on Quantum Computing Infrastructure and Technologies (QUANCOM 2026)}{Trento}{Italy}{}
+% \fi
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%                                        SUMMER SCHOOL                                           %%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \ifSummerSchool
+% \section{Summer/Winter Schools}
+%   \cventry{\small{26$^{th}$ -- 31$^{st}$ May 2024}}{ICAPS 12th Summer School}{Banff Centre for Arts and Creativity}{Canada}{}{
+%     Summer school on task and motion planning.
+%   }
+%   \cventry{\small{12$^{th}$ -- 16$^{th}$ Feb 2024}}{EUSCOTHA: EUregio School on COntrol THeory and Applications}{University of Trento}{Italy}{}{
+%     Winter school on control theory and applications.
+%   }
+% \fi 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          SPONSORSHIPS                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifSponsorships
+\section{Awards and Grants}
+  \cvitem{Jun 2024}{\textbf{ICAPS24 DC Support}, Banff, Canada. As part of the DC, I was awarded a support of $\sim300$\$ to register at the ICAPS24 conference.}
+  \cvitem{Jul 2023}{\textbf{SoCS23 Travel Grant}, Prague, Czech Republic. I was awarded a travel grant of 400 euros.}
+\fi
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%                                          SOCIAL SKILLS                                         %%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \ifSocialSkills
+% \section{Communication and Interpersonal Skills}
+%   \cvitem{}{
+%     Good teamworking skills learned through various projects assigned during
+%     university courses and participations in Hackathon events (Hackathon Italia
+%     2017, Hackathon FBK 2016, Hackathon Google 2018) and Google Hashcode (in
+%     2019, 2020, 2021, 2022). 
+%   }\vspace{-0.4cm}
+% \fi 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           LANGUAGES                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifLanguages
+\section{Languages}
+    \cvitem{English}{Full professional knowledge}
+    \cvitem{German}{Basic knowledge; completed A1a--A1b coursework}
+    \cvitem{Italian}{Native}
+\fi 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           REFERENCES                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifReferences
+\section{Professional References}
+\cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
+  \pguard{Phone: \PrivateLuigiNumber \quad} Email: luigi.palopoli@unitn.it
+}
+\cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
+  \pguard{Phone: \PrivateMarcoNumber \quad} Email: marco.roveri@unitn.it
+}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace*{\fill}
+% \begin{tabular}{p{0.4\paperwidth}p{0.05\paperwidth}p{0.4\paperwidth}}
+%   \multirow{3}{*}{Date: \today} & & \\
+%                                 & & \noindent\rule{0.4\paperwidth}{0.4pt}\\
+%                                 & & \multicolumn{1}{c}{Enrico Saccon}\\
+% \end{tabular}
+
+% \newpage
+% \noindent\makebox[\linewidth]{\rule{.9\paperwidth}{0.4pt}}
+% {\center\tiny
+%     % From template:
+%     % In compliance with the decree no. 196 dated 30/06/2003, I authorize the use of my personal details.\newline
+%     % Le informazioni qui contenute vengono rese ai sensi e per gli effetti degli artt. 46 e 47 del DPR 445/2000.
+%     % I hereby grant permission for the treatment of my personal data (in compliance with Italian law 196 – 06/30/2003 and art. 13 GDPR (2016/679) for all purposes related to the selection procedure.
+%     I hereby grant permission for the treatment of my personal data for all purposes related to the selection procedure, in compliance with Italian laws artt. 46 and 47 of DPR 445/2000.
+%     % From UniTN:
+%     % Le informazioni qui contenute vengono rese ai sensi e per gli effetti degli artt. 46 e 47 del DPR 445/2000.
+%     % Acconsento alla pubblicazione del mio CV in ottemperanza alle disposizioni di legge dettate in materia di trasparenza (D.Lgs. 33/2013).
+% }
+
+% \lfoot{\today}
+\cfoot{
+  \center \tiny
+    I hereby grant permission for the treatment of my personal data for all purposes related to the selection procedure, in compliance with Italian laws artt. 46 and 47 of DPR 445/2000.
+}
+\thispagestyle{fancy}
+\end{document}
