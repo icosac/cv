@@ -67,6 +67,8 @@ sub sync_private_data {
     ['PHONE_NUMBER', 'PrivatePhoneNumber'],
     ['LUIGI_NUMBER', 'PrivateLuigiNumber'],
     ['MARCO_NUMBER', 'PrivateMarcoNumber'],
+    ['LUIGI_EMAIL', 'PrivateLuigiEmail'],
+    ['MARCO_EMAIL', 'PrivateMarcoEmail'],
   );
 
   if ($wants_personal_data) {

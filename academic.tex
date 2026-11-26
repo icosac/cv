@@ -61,8 +61,10 @@
 
 \ifPrivateDataAvailable%
     \newcommand\pguard[1]{#1}
+    \newcommand\refcontact[2]{Phone: #1 \quad Email: \href{mailto:#2}{#2}}
 \else
     \newcommand\pguard[1]{}
+    \newcommand\refcontact[2]{Contact details available upon request}
 \fi
 
 \firstname{Enrico} % Your first name
@@ -300,18 +302,18 @@ systems that connect model training, validation, and real-world robot deployment
 \ifPublications
   %%%% PUBLICATIONS %%%%
   \nocite{
-    saccon2026vlmsdescribemeasureobjectcentric,
-    plantor,
-    3PDP_rect,
-    AutomatedMDPs,
-    3PDP_ML_MDPI,
-    pastorelli2025fast,
-    saccon2024prolog,
-    ComparingMAPF,
-    GPUsGameChanger,
-    IterativeApproach
-  }
-  \citesinthissection{11}
+    saccon2026vlmsdescribemeasureobjectcentric,%
+    plantor,%
+    3PDP_rect,%
+    AutomatedMDPs,%
+    3PDP_ML_MDPI,%
+    pastorelli2025fast,%
+    saccon2024prolog,%
+    ComparingMAPF,%
+    GPUsGameChanger,%
+    IterativeApproach%
+  }%
+  \citesinthissection{10}
   \printbibliography[title={Publications}]
 \fi
 
@@ -452,10 +454,10 @@ systems that connect model training, validation, and real-world robot deployment
 \ifReferences
 \section{Professional References}
 \cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
-  \pguard{Phone: \PrivateLuigiNumber \quad} Email: luigi.palopoli@unitn.it
+  \refcontact{\PrivateLuigiNumber}{\PrivateLuigiEmail}
 }
 \cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
-  \pguard{Phone: \PrivateMarcoNumber \quad} Email: marco.roveri@unitn.it
+  \refcontact{\PrivateMarcoNumber}{\PrivateMarcoEmail}
 }
 \fi
 

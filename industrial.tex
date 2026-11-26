@@ -61,8 +61,10 @@
 
 \ifPrivateDataAvailable%
     \newcommand\pguard[1]{#1}
+    \newcommand\refcontact[2]{Phone: #1 \quad Email: \href{mailto:#2}{#2}}
 \else
     \newcommand\pguard[1]{}
+    \newcommand\refcontact[2]{Contact details available upon request}
 \fi
 
 \firstname{Enrico} % Your first name
@@ -156,7 +158,7 @@ robotic systems that connect high-level reasoning, validation, and real-world de
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifEducation
 \section{Education}
-  \cventry{\small{Nov 2022 -- Nov 2026}}{PhD in Information Engineering and Computer Science}{University of Trento}{Italy}{}{%
+  \cventry{\small{Nov 2022 --}}{PhD in Information Engineering and Computer Science}{University of Trento}{Italy}{}{%
     \textbf{Topics}: Multi-Agent Planning, Temporal Planning, Industrial Robotics. \newline
     \textbf{Goal}: Develop a holistic system that through large language models and logic programming is able to plan and verify schedules for industrial robots and execute them, learning from experience. \newline
     \emph{GitHub}: idra-lab/PLANTOR
@@ -277,8 +279,8 @@ robotic systems that connect high-level reasoning, validation, and real-world de
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ifPublications
   %%%% PUBLICATIONS %%%%
-  \nocite{3PDP_rect,AutomatedMDPs,plantor,pastorelli2025fast,saccon2024prolog,GPUsGameChanger}
-  \citesinthissection{6}
+  \nocite{vlms,3PDP_rect,AutomatedMDPs,plantor,pastorelli2025fast,saccon2024prolog,GPUsGameChanger}
+  \citesinthissection{7}
   \printbibliography[title={Selected Publications}]
 \fi
 
@@ -374,10 +376,10 @@ robotic systems that connect high-level reasoning, validation, and real-world de
 \ifReferences
 \section{Professional References}
 \cventry{}{Luigi Palopoli}{Ordinary Professor at University of Trento}{Italy}{}{
-  \pguard{Phone: \PrivateLuigiNumber \quad} Email: luigi.palopoli@unitn.it
+  \refcontact{\PrivateLuigiNumber}{\PrivateLuigiEmail}
 }
 \cventry{}{Marco Roveri}{Associate Professor at University of Trento}{Italy}{}{
-  \pguard{Phone: \PrivateMarcoNumber \quad} Email: marco.roveri@unitn.it
+  \refcontact{\PrivateMarcoNumber}{\PrivateMarcoEmail}
 }
 \fi
 
